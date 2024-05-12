@@ -1,20 +1,23 @@
 import Card from "../Card/Card";
 
-const Column = ({title}) => {
+const Column = ({title, cardList}) => {
+    //console.log(cardList);
     return (  <div className="main__column column">
     <div className="column__title">
         <p>{title}</p>
     </div>
     <div className="cards">
-
-    <Card categori="Web Design" title="Название задачи" data="30.10.23" />
-
-    <Card categori="Reserch" title="Название задачи" data="30.10.23" />
-  
-    <Card categori="Copiwriting" title="Название задачи" data="30.10.23" />    
-   
+{cardList.map(({id, topic, title, date}) => {
+    <Card 
+    key={id} 
+    topic={topic} 
+    title={title} 
+    date={date} />
+    })}
+    
     </div>
-</div>		 );
+</div>		 
+);
 }
  
 export default Column;
