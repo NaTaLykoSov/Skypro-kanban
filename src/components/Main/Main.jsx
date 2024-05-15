@@ -1,6 +1,5 @@
-import { cardList } from "../data";
+import { useEffect, useState } from "react";
 import Column from "../Column/Column";
-
 
 const statusList = [
     "Без статуса",
@@ -9,14 +8,20 @@ const statusList = [
     "Тестирование",
     "Готово",
   ];
-const Main = () => {
-  //console.log("1", cardList);
+const Main = ({cardList}) => {
+const [isLoading, setLoading] = useState(true);
+useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+}, [] );
   return ( 
     <main className="main">
       <div className="container">
         <div className="main__block">
             <div className="main__content">
-            {statusList.map((status) => (
+            {isLoading && <p>Данные загружаются...</p>}
+            {!isLoading && statusList.map((status) => (
             <Column
             key={status}
             title={status}
