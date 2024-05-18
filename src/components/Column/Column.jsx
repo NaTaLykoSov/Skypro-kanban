@@ -13,10 +13,9 @@ const Column = ({title, cardList}) => {
         title={title} 
         date={date} />
        )}
-    
     </div>
 </div>		 
 );
-}
+};
 
 export default Column;
