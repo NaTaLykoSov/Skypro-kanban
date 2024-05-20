@@ -6,11 +6,13 @@ import PopBrowse from './components/Popups/PopBrowse/PopBrowse'
 import PopExit from './components/Popups/PopExit/PopExit'
 import PopNewCard from './components/Popups/PopNewCard/PopNewCard'
 import { cardList } from './mock/data'
-
+import { GlobalStyle } from './mock/Global.styled';
 
 function App() {
   const [cards, setCards] = useState(cardList);
   return (
+    <>
+    <GlobalStyle />
     <div>
       <div className="wrapper">
 		<PopExit />
@@ -23,6 +25,7 @@ function App() {
 
     <script src="js/script.js"></script>
       </div>
+      </>
   )
 }
 export default App;
