@@ -1,5 +1,6 @@
 import { useState } from "react";
-
+import { Container } from "../../mock/Shared.styled";
+import * as S from "./Header.styled"
 
 const Header = ({setCards, cards}) => {
 const [isOpen, setOpen] = useState(false);
@@ -18,17 +19,17 @@ const onAddCard = () => {
     setCards(newCardList);
 };
     return ( 
-    <header className="header">
-    <div className="container">
-        <div className="header__block">
-            <div className="header__logo _show _light">
+    <S.Header>
+    <Container>
+        <S.HeaderBlock>
+            <S.HeaderLogo>
                 <a href="" target="_self"><img src="images/logo.png" alt="logo"/></a>
-            </div>
-            <div className="header__logo _dark">
+            </S.HeaderLogo>
+            {/* <div className="header__logo _dark">
                 <a href="" target="_self"><img src="images/logo_dark.png" alt="logo"/></a>
-            </div>
-            <nav className="header__nav">
-                <button className="header__btn-main-new _hover01" onClick={onAddCard}>Создать новую задачу</button>
+            </div> */}
+            <S.HeaderNav>
+                <S.HeaderButton onClick={onAddCard}>Создать новую задачу</S.HeaderButton>
                 <div className="header__user _hover02" onClick={handleOpen}>Ivan Ivanov</div>
                 {isOpen && (
                     <div className="header__pop-user-set pop-user-set">
@@ -41,10 +42,10 @@ const onAddCard = () => {
                     <button type="button" className="_hover03"><a href="#popExit">Выйти</a></button>
                 </div>
                 )}
-            </nav>					
-        </div>
-    </div>			
-</header> );
+            </S.HeaderNav>					
+        </S.HeaderBlock>
+    </Container>			
+</S.Header> );
 }
  
 export default Header;

@@ -1,37 +1,42 @@
 import { useEffect, useState } from "react";
 import Column from "../Column/Column";
+import * as S from "./Main.styled";
+import { Container } from "../../mock/Shared.styled";
 
 const statusList = [
-    "Без статуса",
-    "Нужно сделать",
-    "В работе",
-    "Тестирование",
-    "Готово",
-  ];
-const Main = ({cardList}) => {
-const [isLoading, setLoading] = useState(true);
-useEffect(() => {
+  "Без статуса",
+  "Нужно сделать",
+  "В работе",
+  "Тестирование",
+  "Готово",
+];
+
+const Main = ({ cardList }) => {
+  const [isLoading, setLoading] = useState(true);
+  useEffect(() => {
     setTimeout(() => {
       setLoading(false);
     }, 2000);
-}, [] );
-  return ( 
-    <main className="main">
-      <div className="container">
-        <div className="main__block">
-            <div className="main__content">
+  }, []);
+  return (
+    <S.Main>
+      <Container>
+        <S.MainBlock>
+          <S.MainContent>
             {isLoading && <p>Данные загружаются...</p>}
-            {!isLoading && statusList.map((status) => (
-            <Column
-            key={status}
-            title={status}
-            cardList={cardList.filter((card) => card.status === status)}
-               />
-  ))}
-           </div>
-        </div>
-    </div>
-</main> );
-}
- 
+            {!isLoading &&
+              statusList.map((status) => (
+                <Column
+                  key={status}
+                  title={status}
+                  cardList={cardList.filter((card) => card.status === status)}
+                />
+              ))}
+          </S.MainContent>
+        </S.MainBlock>
+      </Container>
+    </S.Main>
+  );
+};
+
 export default Main;
