@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Container } from "../../mock/Shared.styled";
 import * as S from "./Header.styled"
+import { Link } from "react-router-dom";
 
 const Header = ({setCards, cards}) => {
 const [isOpen, setOpen] = useState(false);
@@ -23,24 +24,25 @@ const onAddCard = () => {
     <Container>
         <S.HeaderBlock>
             <S.HeaderLogo>
-                <a href="" target="_self"><img src="images/logo.png" alt="logo"/></a>
+                <Link to="/"><img src="images/logo.png" alt="SKYPRO"/></Link>
             </S.HeaderLogo>
             {/* <div className="header__logo _dark">
                 <a href="" target="_self"><img src="images/logo_dark.png" alt="logo"/></a>
             </div> */}
             <S.HeaderNav>
                 <S.HeaderButton onClick={onAddCard}>Создать новую задачу</S.HeaderButton>
-                <div className="header__user _hover02" onClick={handleOpen}>Ivan Ivanov</div>
+                <S.HeaderUser onClick={handleOpen}>Ivan Ivanov</S.HeaderUser>
                 {isOpen && (
-                    <div className="header__pop-user-set pop-user-set">
-                    <p className="pop-user-set__name">Ivan Ivanov</p>
-                    <p className="pop-user-set__mail">ivan.ivanov@gmail.com</p>
-                    <div className="pop-user-set__theme">
+                    <S.HeaderPopUserSet>
+                    <S.PopUserSetName>Ivan Ivanov</S.PopUserSetName>
+                    <S.PopUserSetMail>ivan.ivanov@gmail.com</S.PopUserSetMail>
+                    <S.PopUserSetTheme>
                         <p>Темная тема</p>
                         <input type="checkbox" className="checkbox" name="checkbox"/>
-                    </div>
-                    <button type="button" className="_hover03"><a href="#popExit">Выйти</a></button>
-                </div>
+                    </S.PopUserSetTheme>
+                    <button type="button" className="_hover03">
+                        <Link to="/exit">Выйти</Link></button>
+                </S.HeaderPopUserSet>
                 )}
             </S.HeaderNav>					
         </S.HeaderBlock>
